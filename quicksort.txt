@@ -1,0 +1,48 @@
+#include<stdio.h>
+int q[9];
+void quicksort(int first,int last)
+{
+int low=first;
+int high=last;
+int mid=(low+high)/2;
+int temp,pivot;
+pivot=q[mid];
+while(low<=high)
+{
+while(q[high]>pivot)
+{
+high=high-1;
+}
+while(q[low]<pivot)
+{
+low=low+1;
+}
+
+if(low<=high)
+{
+temp=q[low];
+q[low]=q[high];
+q[high]=temp;
+low=low+1;
+high=high-1;
+}
+for(int i=1;i<=9;i++)
+{
+printf("%d",q[i]);
+}
+printf("\n");
+}
+if(first<high)
+	quicksort(first,high);
+if(last>low)
+	quicksort(low,last);
+	}
+void main()
+{
+printf("Enter the value in a list");
+for(int i=1;i<=9;i++)
+{
+scanf("%d",&q[i]);
+}
+quicksort(1,9);
+}
